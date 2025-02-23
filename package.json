@@ -1,0 +1,37 @@
+{
+  "name": "electron-svelte",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:svelte dev:electron",
+    "dev:svelte": "vite",
+    "dev:electron": "pnpm transpile:electron && cross-env NODE_ENV=development electron .",
+    "transpile:electron": "tsc --project src/electron/tsconfig.json",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+    "dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",
+    "dist:windows": "npm run transpile:electron && npm run build && electron-builder --win --x64",
+    "dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@tsconfig/svelte": "^5.0.4",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "svelte": "^5.19.6",
+    "svelte-check": "^4.1.4",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron"
+    ]
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

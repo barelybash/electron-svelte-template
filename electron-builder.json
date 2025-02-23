@@ -1,0 +1,15 @@
+{
+  "appId": "com.author-or-company.app-name",
+  "files": ["dist-electron", "dist-<your framework>"],
+  "icon": "./desktop-icon.png",
+  "mac": {
+    "target": "dmg"
+  },
+  "linux": {
+    "target": "AppImage",
+    "category": "<app category>"
+  },
+  "windows": {
+    "target": ["portable", "msi"]
+  }
+}
