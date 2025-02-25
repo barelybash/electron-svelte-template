@@ -1,6 +1,7 @@
 {
   "appId": "com.author-or-company.app-name",
-  "files": ["dist-electron", "dist-<your framework>"],
+  "files": ["dist-electron", "dist-svelte"],
+  "extraResources": ["dist-electron/preload.cjs"],
   "icon": "./desktop-icon.png",
   "mac": {
     "target": "dmg"
